@@ -1,0 +1,68 @@
+/* Dr. Colmenares | Archivos — expediente: columna documental con pestaña manila */
+:root{
+  --bg:#f6f7f5; --surface:#ffffff; --ink:#1d2b38; --muted:#56626e; --line:#d9dedd;
+  --accent:#1f4e6b; --manila:#c9a24a; --ok:#2f7d4f; --warn:#a86b12; --bad:#b33a3a;
+  --display:"Literata", Georgia, serif; --body:"IBM Plex Sans", system-ui, sans-serif; --mono:"IBM Plex Mono", ui-monospace, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#12181e; --surface:#1a222a; --ink:#e4e9ec; --muted:#9aa7b1; --line:#2c3843;
+  --accent:#7fb3d3; --manila:#d8b866; --ok:#5fbf86; --warn:#e0a84a; --bad:#e07070; color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+img{max-width:100%;height:auto}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--manila);outline-offset:2px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left))}
+header.top{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-block:14px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.2rem;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--manila)}
+nav.menu{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}
+nav.menu a{text-decoration:none;color:var(--ink)} nav.menu a:hover{color:var(--accent)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.12;margin:.35em 0 .35em;text-wrap:balance}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.2;margin:0 0 .6em;text-wrap:balance}
+h3{font-size:1.05rem;margin:0 0 .4em}
+.lead{font-size:1.12rem;color:var(--muted);max-width:60ch}
+.hero{display:grid;grid-template-columns:1.25fr .9fr;gap:44px;align-items:center;padding-block:56px 36px}
+.hero>*,.cols>*,.grid3>*{min-width:0}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;padding:12px 20px;border-radius:6px;font-weight:600;text-decoration:none;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg)} .btn.ghost{color:var(--accent)}
+.folder{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:4px 10px 10px 10px;padding:22px 20px 16px;margin-top:26px;box-shadow:0 12px 32px -20px rgba(0,0,0,.4)}
+.folder::before{content:"EXPEDIENTE · DIAGNÓSTICO";position:absolute;top:-26px;left:-1px;background:var(--manila);color:#1d2b38;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;padding:5px 12px;border-radius:6px 6px 0 0}
+.row{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+.row:last-of-type{border-bottom:0}
+.code{font-family:var(--mono);color:var(--muted)}
+.pill{font-family:var(--mono);font-size:.72rem;padding:3px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+.note{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+section{padding-block:48px;border-top:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.steps b{display:block;font-family:var(--mono);font-size:.8rem;color:var(--manila);margin-bottom:6px}
+.steps p,.grid3 p{margin:0;color:var(--muted);font-size:.95rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ul.clean li{padding-left:22px;position:relative}
+ul.clean li::before{content:"▸";position:absolute;left:0;color:var(--manila)}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px;display:grid;gap:8px;align-content:start}
+.price .amt{font-family:var(--display);font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1}
+.price small{color:var(--muted)}
+.contact{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.contact>*{min-width:0}
+.qr{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;width:200px}
+.qr img{display:block;width:100%}
+.qr span{font-size:.8rem;color:#1d2b38}
+.mail{font-family:var(--mono);overflow-wrap:anywhere}
+article.post{max-width:68ch;margin:0 auto;padding-block:48px}
+article.post h2{margin-top:1.4em}
+.posts{display:grid;gap:18px}
+.posts a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;text-decoration:none;color:var(--ink)}
+.posts a:hover{border-color:var(--accent)}
+footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);font-size:.85rem}
+@media (max-width:860px){.hero,.cols,.contact{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}.row{grid-template-columns:58px 1fr}.row .pill{grid-column:2;justify-self:start}}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-1px)}}
