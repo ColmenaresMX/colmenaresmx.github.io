@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semáforo archivístico municipal — Dr. Colmenares | Archivos</title>
+<meta name="description" content="Autoevaluación gratuita de 3 minutos: 15 preguntas sobre la Ley General de Archivos para saber si su ayuntamiento está en verde, amarillo o rojo antes de la entrega-recepción 2027.">
+<link rel="canonical" href="https://colmenaresmx.github.io/semaforo.html">
+<meta property="og:title" content="Semáforo archivístico municipal">
+<meta property="og:description" content="¿Su ayuntamiento cumple la Ley General de Archivos? Responda 15 preguntas y conozca su semáforo antes de la entrega-recepción 2027.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Dr. Colmenares | Archivos">
+<meta property="og:url" content="https://colmenaresmx.github.io/semaforo.html">
+<meta property="og:image" content="https://colmenaresmx.github.io/img/og-semaforo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Semáforo archivístico municipal: verde, amarillo y rojo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1f4e6b">
+<link rel="icon" href="img/icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+<style>
+.sem-intro{padding-block:40px 8px;max-width:68ch}
+.progress{position:sticky;top:var(--hdr,58px);z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}
+.progress .bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.progress .bar i{display:block;height:100%;width:0;background:var(--manila);transition:width .2s}
+.progress small{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+form.quiz{display:grid;gap:14px;padding-block:22px 10px;max-width:760px}
+fieldset.q{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px}
+fieldset.q.done{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+fieldset.q legend{float:left;width:100%;padding:0;margin-bottom:12px;font-weight:500;line-height:1.45}
+legend .n{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--manila);margin-bottom:2px}
+.opts{clear:both;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;inset:0;margin:0}
+.opts span{display:block;text-align:center;padding:11px 6px;border:1px solid var(--line);border-radius:6px;font-weight:600;font-size:.95rem;cursor:pointer;user-select:none}
+.opts input:focus-visible+span{outline:2px solid var(--manila);outline-offset:2px}
+.opts input[value="2"]:checked+span{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opts input[value="1"]:checked+span{background:var(--warn);border-color:var(--warn);color:var(--bg)}
+.opts input[value="0"]:checked+span{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.submit{display:grid;gap:8px;justify-items:start;padding-block:8px 40px}
+button.btn{font:inherit;font-weight:600;cursor:pointer}
+button.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+#resultado{padding-block:40px 56px;max-width:760px;scroll-margin-top:calc(var(--hdr,58px) + 10px)}
+fieldset.q{scroll-margin-top:calc(var(--hdr,58px) + 50px)}
+#resultado[hidden]{display:none}
+.result{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+.lights{display:grid;gap:10px;background:var(--ink);padding:12px;border-radius:14px}
+.lights i{width:46px;height:46px;border-radius:50%;opacity:.18}
+.lights .r{background:#e5484d}.lights .y{background:#f2b632}.lights .g{background:#3fb56b}
+.lights i.on{opacity:1;box-shadow:0 0 22px 4px currentColor}
+.lights .r.on{color:#e5484d}.lights .y.on{color:#f2b632}.lights .g.on{color:#3fb56b}
+.score{font-family:var(--mono);color:var(--muted);font-size:.9rem}
+.recs{counter-reset:r;list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}
+.recs li{counter-increment:r;padding:14px 16px 14px 52px;position:relative;background:var(--bg);border:1px solid var(--line);border-radius:8px}
+.recs li::before{content:counter(r);position:absolute;left:14px;top:13px;width:26px;height:26px;border-radius:50%;background:var(--manila);color:#1d2b38;font-family:var(--mono);font-weight:500;display:grid;place-items:center;font-size:.85rem}
+.recs b{display:block;margin-bottom:2px}
+.recs span{color:var(--muted);font-size:.95rem}
+.btn.wa{background:#1f7a4a;border-color:#1f7a4a;color:#fff}
+.disclaimer{font-size:.82rem;color:var(--muted);margin-top:18px}
+@media (max-width:480px){.result{grid-template-columns:1fr;justify-items:start}.lights{grid-auto-flow:column}.lights i{width:38px;height:38px}.opts span{padding:12px 4px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./">Dr. Colmenares <span>|</span> Archivos</a>
+  <nav class="menu"><a href="./#diagnostico">Diagnóstico</a><a href="./#servicios">Servicios</a><a href="semaforo.html" aria-current="page">Semáforo</a><a href="blog/">Blog</a><a href="./#contacto">Contacto</a></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="sem-intro">
+    <div class="eyebrow">Autoevaluación gratuita · 3 minutos</div>
+    <h1>Semáforo archivístico municipal</h1>
+    <p class="lead">Responda 15 preguntas sobre las obligaciones de la Ley General de Archivos y sepa si su ayuntamiento está en verde, amarillo o rojo antes de la entrega-recepción 2027.</p>
+  </div>
+
+  <div class="progress" aria-hidden="true"><div class="bar"><i id="bar"></i></div><small id="count">0 de 15 respondidas</small></div>
+
+  <form class="quiz" id="quiz" novalidate></form>
+  <div class="submit">
+    <button class="btn primary" id="ver" type="button" disabled>Ver mi semáforo</button>
+    <small class="score" id="falta">Faltan 15 preguntas</small>
+  </div>
+
+  <section id="resultado" hidden aria-live="polite">
+    <div class="folder">
+      <div class="result">
+        <div class="lights" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+        <div>
+          <div class="eyebrow">Su resultado</div>
+          <h2 id="r-titulo" style="margin:.2em 0 .3em"></h2>
+          <p id="r-texto" style="margin:0"></p>
+          <p class="score" id="r-puntos" style="margin:.4em 0 0"></p>
+        </div>
+      </div>
+      <h3 style="margin-top:26px">3 recomendaciones prioritarias</h3>
+      <ol class="recs" id="recs"></ol>
+      <div class="cta">
+        <a class="btn wa" id="wa" href="https://wa.me/529618083850" target="_blank" rel="noopener">Enviar mi resultado por WhatsApp</a>
+        <button class="btn ghost" id="reiniciar" type="button">Volver a empezar</button>
+      </div>
+      <p class="disclaimer">Orientación general basada en la Ley General de Archivos; no sustituye un diagnóstico en sitio. Sus respuestas no se guardan ni se envían a ningún servidor.</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Dr. Colmenares | Archivos · San Cristóbal de Las Casas, Chiapas · Atención en todo México</div></footer>
+
+<script>
+(function(){
+  var Q = [
+    {t:"¿El ayuntamiento tiene designada formalmente (por nombramiento) a la persona titular del Área Coordinadora de Archivos?",
+     r:"Designe formalmente a la Coordinación de Archivos",d:"Emita el nombramiento por escrito y dé a la coordinación nivel jerárquico suficiente para dirigir el Sistema Institucional de Archivos.",p:10},
+    {t:"¿Está integrado y operando el Sistema Institucional de Archivos (coordinación, correspondencia y archivos de trámite, concentración e histórico)?",
+     r:"Integre el Sistema Institucional de Archivos",d:"Formalice por acuerdo de cabildo sus áreas operativas y normativas y defina quién responde por cada una.",p:9},
+    {t:"¿Existe una oficialía de partes (área de correspondencia) que registre y controle la entrada y salida de documentos?",
+     r:"Ordene la oficialía de partes",d:"Lleve un registro único de entrada y salida con folio, fecha y turno, para que cada documento tenga trazabilidad desde su origen.",p:6},
+    {t:"¿Cada unidad administrativa tiene una persona responsable de su archivo de trámite?",
+     r:"Nombre responsables de archivo de trámite",d:"Cada dirección debe tener un responsable designado que integre y controle sus expedientes activos.",p:7},
+    {t:"¿Los expedientes de las áreas están integrados, identificados con portada o guarda y ordenados?",
+     r:"Integre correctamente los expedientes",d:"Agrupe los documentos por asunto, identifíquelos con portada (código, serie, fechas) y evite los legajos sueltos.",p:6},
+    {t:"¿Cuenta con un archivo de concentración con responsable, espacio y estantería adecuados?",
+     r:"Habilite el archivo de concentración",d:"Destine un espacio seco y seguro, con responsable designado, para recibir las transferencias primarias de las áreas.",p:6},
+    {t:"¿Cuenta con archivo histórico propio, o un convenio para resguardar los documentos con valor histórico?",
+     r:"Resguarde el archivo histórico",d:"Identifique los documentos con valor histórico y asegure su custodia, propia o por convenio con el archivo estatal.",p:4},
+    {t:"¿Tiene un Cuadro General de Clasificación Archivística elaborado y aprobado?",
+     r:"Elabore el Cuadro General de Clasificación Archivística",d:"Es el instrumento base: sin él no pueden clasificarse expedientes ni elaborarse el catálogo ni los inventarios.",p:10},
+    {t:"¿Tiene un Catálogo de Disposición Documental aprobado, con plazos de conservación y destino final?",
+     r:"Elabore y apruebe el Catálogo de Disposición Documental",d:"Defina plazos de conservación y destino final de cada serie para poder transferir y dar de baja sin riesgo legal.",p:9},
+    {t:"¿Mantiene inventarios documentales actualizados (general, de transferencia y de baja)?",
+     r:"Actualice los inventarios documentales",d:"Los inventarios por área son la prueba de lo que existe y la base documental de la entrega-recepción.",p:8},
+    {t:"¿Está instalado el Grupo Interdisciplinario y sesiona con actas?",
+     r:"Instale el Grupo Interdisciplinario",d:"Intégrelo con jurídico, planeación, TI, transparencia, control interno y las áreas productoras, y documente sus sesiones en actas.",p:7},
+    {t:"¿Elaboró y publicó en su portal el Programa Anual de Desarrollo Archivístico (PADA) de este año?",
+     r:"Publique el Programa Anual de Desarrollo Archivístico",d:"El PADA debe publicarse en el portal dentro de los primeros 30 días del año; es de las primeras cosas que revisan los órganos de fiscalización.",p:8},
+    {t:"¿Publica el informe anual de cumplimiento del PADA y la Guía de Archivo Documental?",
+     r:"Publique el informe del PADA y la Guía de Archivo Documental",d:"Rinda cuentas del avance del año anterior y actualice la guía para transparentar qué series documentales resguarda.",p:5},
+    {t:"¿El personal responsable de archivos recibió capacitación en gestión documental en el último año?",
+     r:"Capacite al personal de archivo",d:"Programe al menos un taller anual para la coordinación y los responsables de trámite; la capacitación debe quedar prevista en el PADA.",p:6},
+    {t:"¿Tiene un plan para la entrega-recepción 2027 que incluya la relación de expedientes de cada área?",
+     r:"Prepare desde ahora la entrega-recepción 2027",d:"Defina un calendario por área para depurar, inventariar y validar expedientes; dejarlo para el último trimestre multiplica las observaciones.",p:9}
+  ];
+  var CRIT=[0,7,8]; // coordinación, cuadro y catálogo: sin ellos no hay verde
+  var form=document.getElementById('quiz'), ver=document.getElementById('ver');
+  var html='';
+  Q.forEach(function(q,i){
+    html+='<fieldset class="q" id="q'+i+'"><legend><span class="n">PREGUNTA '+(i+1)+' DE '+Q.length+'</span>'+q.t+'</legend><div class="opts">'+
+      [['2','Sí'],['1','Parcial'],['0','No']].map(function(o){return '<label><input type="radio" name="p'+i+'" value="'+o[0]+'"><span>'+o[1]+'</span></label>';}).join('')+
+      '</div></fieldset>';
+  });
+  form.innerHTML=html;
+
+  var hdr=document.querySelector('header.top');
+  function setHdr(){document.documentElement.style.setProperty('--hdr',hdr.offsetHeight+'px');}
+  setHdr(); window.addEventListener('resize',setHdr);
+
+  function answers(){return Q.map(function(_,i){var c=form.querySelector('input[name="p'+i+'"]:checked');return c?+c.value:null;});}
+  function update(){
+    var a=answers(), n=a.filter(function(v){return v!==null;}).length;
+    document.getElementById('bar').style.width=(n/Q.length*100)+'%';
+    document.getElementById('count').textContent=n+' de '+Q.length+' respondidas';
+    var f=Q.length-n;
+    document.getElementById('falta').textContent=f?('Falta'+(f>1?'n ':' ')+f+' pregunta'+(f>1?'s':'')):'¡Listo! Vea su resultado';
+    ver.disabled=f>0;
+    a.forEach(function(v,i){document.getElementById('q'+i).classList.toggle('done',v!==null);});
+  }
+  form.addEventListener('change',function(e){
+    update();
+    var fs=e.target.closest('fieldset'), next=fs&&fs.nextElementSibling;
+    var a=answers();
+    if(next && a[+next.id.slice(1)]===null && window.matchMedia('(max-width:860px)').matches){
+      setTimeout(function(){next.scrollIntoView({behavior:'smooth',block:'center'});},150);
+    }
+  });
+
+  ver.addEventListener('click',function(){
+    var a=answers(), pts=a.reduce(function(s,v){return s+v;},0), max=Q.length*2, pct=Math.round(pts/max*100);
+    var critNo=CRIT.some(function(i){return a[i]===0;});
+    var color = pct>=80 && !critNo ? 'verde' : (pct>=50 ? 'amarillo' : 'rojo');
+    var txt={
+      verde:['Verde: cumplimiento sólido','Su ayuntamiento tiene las bases de la Ley General de Archivos. El reto ahora es mantenerlas, documentarlas y llegar en orden a la entrega-recepción.'],
+      amarillo:['Amarillo: cumplimiento parcial','Hay avances, pero también obligaciones pendientes que pueden generar observaciones de auditoría. Conviene atenderlas en los próximos meses.'],
+      rojo:['Rojo: riesgo alto','Faltan obligaciones básicas de la Ley General de Archivos. Hay riesgo de observaciones, responsabilidades administrativas y una entrega-recepción complicada.']
+    }[color];
+    if(color==='amarillo' && pct>=80 && critNo){txt[1]='Su puntaje es alto, pero falta al menos un elemento indispensable (coordinación de archivos, cuadro de clasificación o catálogo de disposición), por lo que no alcanza el verde.';}
+    document.querySelectorAll('.lights i').forEach(function(l){l.classList.toggle('on',l.classList.contains({verde:'g',amarillo:'y',rojo:'r'}[color]));});
+    document.getElementById('r-titulo').textContent=txt[0];
+    document.getElementById('r-texto').textContent=txt[1];
+    document.getElementById('r-puntos').textContent=pts+' de '+max+' puntos ('+pct+' %) · '+a.filter(function(v){return v===2;}).length+' Sí · '+a.filter(function(v){return v===1;}).length+' Parcial · '+a.filter(function(v){return v===0;}).length+' No';
+
+    var pend=Q.map(function(q,i){return {q:q,v:a[i]};}).filter(function(o){return o.v<2;})
+      .sort(function(x,y){return (x.v-y.v)||(y.q.p-x.q.p);}).slice(0,3);
+    var recs=pend.map(function(o){return '<li><b>'+o.q.r+(o.v===1?' (avance parcial)':'')+'</b><span>'+o.q.d+'</span></li>';});
+    var keep=[
+      '<li><b>Documente lo que ya cumple</b><span>Reúna nombramientos, actas, instrumentos aprobados y publicaciones en una carpeta de evidencias para auditoría.</span></li>',
+      '<li><b>Revise sus instrumentos cada año</b><span>Actualice el cuadro de clasificación y el catálogo cuando cambie la estructura orgánica del ayuntamiento.</span></li>',
+      '<li><b>Ensaye la entrega-recepción</b><span>Haga un corte de inventarios por área seis meses antes para corregir faltantes con tiempo.</span></li>'
+    ];
+    while(recs.length<3){recs.push(keep[recs.length]);}
+    document.getElementById('recs').innerHTML=recs.join('');
+
+    var res=color.charAt(0).toUpperCase()+color.slice(1)+' ('+pts+' de '+max+' puntos)';
+    document.getElementById('wa').href='https://wa.me/529618083850?text='+encodeURIComponent('Hola Dr. Colmenares, hice el semáforo archivístico y obtuve: '+res);
+    var sec=document.getElementById('resultado'); sec.hidden=false;
+    sec.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  document.getElementById('reiniciar').addEventListener('click',function(){
+    form.reset(); update(); document.getElementById('resultado').hidden=true; window.scrollTo({top:0,behavior:'smooth'});
+  });
+  update();
+})();
+</script>
+</body>
+</html>
